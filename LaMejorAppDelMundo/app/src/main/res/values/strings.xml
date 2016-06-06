@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">LaMejorAppDelMundo</string>
+    <string name="edit_message">Enter a message</string>
+    <string name="button_send">Send</string>
+    <string name="version_check_ok">All good :)</string>
+    <string name="version_check_fail">Update :(</string>
+    <string name="resume">Welcome back! :D</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment_2">Changed fragment</string>
+    <string name="button_fragment">Change Fragment</string>
+
+</resources>

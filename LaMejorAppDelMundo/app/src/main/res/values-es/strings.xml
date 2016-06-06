@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LaMejorAppDelMundo</string>
+    <string name="edit_message">Escribe un mensaje</string>
+    <string name="button_send">Enviar</string>
+    <string name="version_check_ok">Todo bien :)</string>
+    <string name="version_check_fail">Actualiza :(</string>
+    <string name="resume">¡Bienvenido de vuelta! :D</string>
+
+</resources>
