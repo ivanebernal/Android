@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class DisplayMessageActivity extends AppCompatActivity implements MyFragment.OnFragmentInteractionListener, ChangedFragment.OnFragmentInteractionListener{
 
-    ArrayList<String> fragmentList = new ArrayList<>();
+    public static ArrayList<String> fragmentList = new ArrayList<>();
 
     ChangedFragment changedFragment = new ChangedFragment();
     String ARG_PARAM1 = "com.ivanebernal.lamejorappdelmundo.arraylist";
@@ -67,7 +67,7 @@ public class DisplayMessageActivity extends AppCompatActivity implements MyFragm
 
     @Override
     public void onMyFragmentInteraction(ArrayList<String> list) {
-        list.add("List item #" + (list.size()+1));
+
     }
 
     @Override

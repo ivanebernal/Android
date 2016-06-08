@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import java.util.ArrayList;
 
@@ -60,20 +61,27 @@ public class MyFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_my, container, false);
+        Button button = (Button) rootView.findViewById(R.id.button_fragment);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DisplayMessageActivity.fragmentList.add("Element #" + (DisplayMessageActivity.fragmentList.size()+1));
+            }
+        });
+        return rootView;
     }
-//
-//    public void onButtonPressed(ArrayList<String> list) {
-//        if (mListener != null) {
-//            mListener.onMyFragmentInteraction(list);
-//        }
-//    }
+
+    public void onButtonPressed(View view) {
+
+    }
 
     @Override
     public void onAttach(Context context) {

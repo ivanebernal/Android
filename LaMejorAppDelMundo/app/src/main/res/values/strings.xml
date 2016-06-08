@@ -12,5 +12,7 @@
     <string name="button_fragment">Change Fragment</string>
     <string name="element_list">First element</string>
     <string name="button_in_fragment">Add list element</string>
+    <string name="pref_file_key">com.ivanebernal.lamejorappdelmundo.PREF_FILE_KEY</string>
+    <string name="edit_save_message">com.ivanebernal.lamejorappdelmundo.SAVED_MESSAGE</string>
 
 </resources>

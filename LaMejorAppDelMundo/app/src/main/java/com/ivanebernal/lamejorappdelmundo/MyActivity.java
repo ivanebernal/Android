@@ -2,8 +2,10 @@ package com.ivanebernal.lamejorappdelmundo;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.location.LocationManager;
 import android.os.Build;
+import android.support.v4.content.SharedPreferencesCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,6 +19,7 @@ public class MyActivity extends AppCompatActivity {
 
     public final static String EXTRA_MESSAGE = "com.ivanebernal.lamejorappdelmundo.MESSAGE";
 
+    private SharedPreferences sharedPreferences = this.getSharedPreferences(getString(R.string.pref_file_key), Context.MODE_PRIVATE);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,12 +46,12 @@ public class MyActivity extends AppCompatActivity {
         boolean gpsEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
     }*/
 
-    /*    @Override
+        @Override
     protected void onResume() {
         super.onResume();
-        EditText editText = (EditText) findViewById(R.id.edit_message);
-        editText.setHint(R.string.resume);
-    }*/
+            EditText editText = (EditText) findViewById(R.id.edit_message);
+            editText.setHint(R.string.resume);
+    }
 
     /*@Override
     protected void onPause() {
@@ -57,6 +60,17 @@ public class MyActivity extends AppCompatActivity {
         editText.setHint(R.string.resume);
 
     }*/
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        EditText editText = (EditText) findViewById(R.id.edit_message);
+        String text = editText.getText().toString();
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putString(getString(R.string.edit_save_message), text);
+        editor.commit();
+    }
 
     @Override
     protected void onRestart() {
