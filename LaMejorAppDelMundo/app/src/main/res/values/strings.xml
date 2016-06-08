@@ -10,5 +10,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hello_blank_fragment_2">Changed fragment</string>
     <string name="button_fragment">Change Fragment</string>
+    <string name="element_list">First element</string>
+    <string name="button_in_fragment">Add list element</string>
 
 </resources>

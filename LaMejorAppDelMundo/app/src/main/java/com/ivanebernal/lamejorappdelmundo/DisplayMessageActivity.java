@@ -1,18 +1,22 @@
 package com.ivanebernal.lamejorappdelmundo;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class DisplayMessageActivity extends AppCompatActivity implements MyFragment.OnFragmentInteractionListener, ChangedFragment.OnFragmentInteractionListener{
 
+    ArrayList<String> fragmentList = new ArrayList<>();
 
+    ChangedFragment changedFragment = new ChangedFragment();
+    String ARG_PARAM1 = "com.ivanebernal.lamejorappdelmundo.arraylist";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,27 +40,38 @@ public class DisplayMessageActivity extends AppCompatActivity implements MyFragm
             firstFragment.setArguments(getIntent().getExtras());
 
             getSupportFragmentManager().beginTransaction().add(R.id.fragment_view, firstFragment).commit();
-
         }
-
-
     }
 
     public void changeFragment(View view){
-        ChangedFragment changedFragment = new ChangedFragment();
         Bundle args = new Bundle();
-        changedFragment.setArguments(args);
-
+        args.putStringArrayList(ARG_PARAM1, fragmentList);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        try {
+            changedFragment.setArguments(args);
+            transaction.replace(R.id.fragment_view, changedFragment);
+            transaction.addToBackStack(null);
 
-        transaction.replace(R.id.fragment_view, changedFragment);
-        transaction.addToBackStack(null);
+            transaction.commit();
 
-        transaction.commit();
+        }catch(Exception e){
+            //ignore
+        }
+
     }
 
     @Override
-    public void onFragmentInteraction(Uri uri) {
+    public void onChangedFragmentInteraction(ArrayList<String> list) {
+
+    }
+
+    @Override
+    public void onMyFragmentInteraction(ArrayList<String> list) {
+        list.add("List item #" + (list.size()+1));
+    }
+
+    @Override
+    public void onCreateMyFragment() {
 
     }
 }

@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -66,13 +68,12 @@ public class MyFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_my, container, false);
     }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
+//
+//    public void onButtonPressed(ArrayList<String> list) {
+//        if (mListener != null) {
+//            mListener.onMyFragmentInteraction(list);
+//        }
+//    }
 
     @Override
     public void onAttach(Context context) {
@@ -103,6 +104,7 @@ public class MyFragment extends Fragment {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onMyFragmentInteraction(ArrayList<String> list);
+        void onCreateMyFragment();
     }
 }

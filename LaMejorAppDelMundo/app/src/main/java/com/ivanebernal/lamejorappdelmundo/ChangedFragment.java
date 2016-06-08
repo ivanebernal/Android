@@ -7,6 +7,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 
 /**
@@ -17,14 +21,16 @@ import android.view.ViewGroup;
  * Use the {@link ChangedFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
+
 public class ChangedFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM1 = "com.ivanebernal.lamejorappdelmundo.arraylist";
     private static final String ARG_PARAM2 = "param2";
+    ArrayAdapter<String> adapter;
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
+    private ArrayList<String> mParam1;
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
@@ -55,9 +61,10 @@ public class ChangedFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam1 = getArguments().getStringArrayList(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
@@ -68,10 +75,20 @@ public class ChangedFragment extends Fragment {
     }
 
     // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+    public void onButtonPressed() {
+//        if (mListener != null) {
+//            mListener.onChangedFragmentInteraction();
+//        }
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ListView listView = (ListView) getView().findViewById(R.id.list_test);
+
+        adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,mParam1);
+        listView.setAdapter(adapter);
     }
 
     @Override
@@ -83,6 +100,7 @@ public class ChangedFragment extends Fragment {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
         }
+
     }
 
     @Override
@@ -103,6 +121,6 @@ public class ChangedFragment extends Fragment {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onChangedFragmentInteraction(ArrayList<String> arrayList);
     }
 }
